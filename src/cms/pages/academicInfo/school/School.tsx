@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import BreadcrumbComp from 'src/layouts/full/shared/breadcrumb/BreadcrumbComp';
 import CardBox from 'src/components/shared/CardBox';
 import SearchBox from 'src/components/shared/SearchBox';
@@ -32,7 +32,7 @@ const School = () => {
   ];
 
   const [schools, setSchools] = useState([]);
-  const [totalPages, setTotalPages] = useState(1);
+  const [totalPages] = useState(1);
   const [searchText, setSearchText] = useState('');
 
   useEffect(() => {
@@ -40,7 +40,7 @@ const School = () => {
     setSchools(dummySchoolData);
   }, []);
 
-  const getSchools = (page = 1) => {
+  const getSchools = () => {
     // For dummy: just update page (future: add pagination logic)
     setSchools(dummySchoolData);
   };

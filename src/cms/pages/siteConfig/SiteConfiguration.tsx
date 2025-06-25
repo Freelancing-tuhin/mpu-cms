@@ -43,7 +43,7 @@ const SiteConfiguration = () => {
       <BreadcrumbComp title="Site Configuration" items={BCrumb} />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-6">
-        {items.map((item, idx) => (
+        {items.map((item) => (
           <SubLinks key={uniqueId()} icon={item.icon} title={item.title} subtitle={item.subtitle} />
         ))}
       </div>

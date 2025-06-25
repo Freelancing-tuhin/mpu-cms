@@ -10,7 +10,6 @@ import { useContext, useState } from 'react';
 import { createEvent, CreateEventPayload } from 'src/service/createEvent';
 // import { useNavigate } from 'react-router';
 import { AuthContext } from 'src/context/authContext/AuthContext';
-import LockScreen from 'src/views/authentication/lockScreen/LockScreen';
 import AdditionalDetails from 'src/components/apps/ecommerce/addProduct/AdditionalDetails';
 import AddFoodPrint from 'src/components/apps/ecommerce/addProduct/AddFoodPrint';
 import AddOtherImages from 'src/components/apps/ecommerce/editProduct/addOtherImages';

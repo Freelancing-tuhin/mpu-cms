@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 
 const SchoolTable = ({ schools, totalPages, getSchools, searchText }: any) => {
-  const [editedSchool, setEditedSchool] = useState();
-  const [openEditModal, setOpenEditModal] = useState(false);
+  const [, setEditedSchool] = useState();
+  const [, setOpenEditModal] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
 
   const OpenModal = (data: any) => {
@@ -13,14 +13,14 @@ const SchoolTable = ({ schools, totalPages, getSchools, searchText }: any) => {
     setEditedSchool(data);
   };
 
-  const handleDeleteSchool = async (schoolId: any) => {
-    try {
-      //   await deleteSchool(schoolId);
-      getSchools(currentPage);
-    } catch (error) {
-      console.error('Failed to delete school:', error);
-    }
-  };
+  //   const handleDeleteSchool = async () => {
+  //     try {
+  //       //   await deleteSchool(schoolId);
+  //       getSchools(currentPage);
+  //     } catch (error) {
+  //       console.error('Failed to delete school:', error);
+  //     }
+  //   };
 
   useEffect(() => {
     getSchools(currentPage);
@@ -73,7 +73,7 @@ const SchoolTable = ({ schools, totalPages, getSchools, searchText }: any) => {
                     color="blue"
                     size="xs"
                     className="bg-red-500"
-                    onClick={() => handleDeleteSchool(item._id)}
+                    // onClick={() => handleDeleteSchool(item._id)}
                   >
                     <Icon icon="hugeicons:delete-03" height="19" />
                   </Button>
