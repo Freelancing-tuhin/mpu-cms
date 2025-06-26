@@ -9,6 +9,10 @@ import FactFigure from 'src/cms/pages/academicStats/factFigure';
 import Recruiter from 'src/cms/pages/academicStats/recruiter';
 import Placement from 'src/cms/pages/academicStats/placement';
 import Testimonial from 'src/cms/pages/academicStats/testimonial';
+import NewsPost from 'src/cms/pages/contentManage/newsPost';
+import PressRelease from 'src/cms/pages/contentManage/pressRelease';
+import Announcement from 'src/cms/pages/contentManage/accouncement';
+import Notice from 'src/cms/pages/contentManage/notice';
 
 const AcademicInfo = Loadable(lazy(() => import('src/cms/pages/academicInfo/AcademicInfo')));
 const AcademicsStats = Loadable(lazy(() => import('src/cms/pages/academicStats/AcademicsStats')));
@@ -148,6 +152,42 @@ const Router = [
         element: (
           <>
             <Testimonial />
+          </>
+        ),
+      },
+      {
+        path: '/content-management/news',
+        exact: true,
+        element: (
+          <>
+            <NewsPost />
+          </>
+        ),
+      },
+      {
+        path: '/content-management/press',
+        exact: true,
+        element: (
+          <>
+            <PressRelease />
+          </>
+        ),
+      },
+      {
+        path: '/content-management/announcements',
+        exact: true,
+        element: (
+          <>
+            <Announcement />
+          </>
+        ),
+      },
+      {
+        path: '/content-management/notices',
+        exact: true,
+        element: (
+          <>
+            <Notice />
           </>
         ),
       },
