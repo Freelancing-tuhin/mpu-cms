@@ -1,6 +1,5 @@
-
-import Bgimg from "/src/assets/images/logos/logo-icon.svg";
-import { Button } from "flowbite-react";
+import Bgimg from '/src/assets/images/logos/logo-icon.svg';
+import { Button } from 'flowbite-react';
 
 const LeftSidebarPart = () => {
   return (
@@ -14,13 +13,15 @@ const LeftSidebarPart = () => {
           <h2 className="text-white text-[40px] font-bold leading-[normal]">
             Welcome to
             <br></br>
-            MatDash
+            Admin Dashboard
           </h2>
           <p className="opacity-75 text-white my-4 text-base font-medium">
-            MatDash helps developers to build organized and well coded
-            dashboards full of beautiful and rich modules.
+            MatDash helps developers to build organized and well coded dashboards full of beautiful
+            and rich modules.
           </p>
-          <Button className="mt-6" color={"primary"}>Learn More</Button>
+          <Button className="mt-6" color={'primary'}>
+            Login to continue
+          </Button>
         </div>
       </div>
     </>

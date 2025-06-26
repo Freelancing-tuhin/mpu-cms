@@ -13,6 +13,7 @@ import NewsPost from 'src/cms/pages/contentManage/newsPost';
 import PressRelease from 'src/cms/pages/contentManage/pressRelease';
 import Announcement from 'src/cms/pages/contentManage/accouncement';
 import Notice from 'src/cms/pages/contentManage/notice';
+import Login from 'src/views/authentication/auth1/Login';
 
 const AcademicInfo = Loadable(lazy(() => import('src/cms/pages/academicInfo/AcademicInfo')));
 const AcademicsStats = Loadable(lazy(() => import('src/cms/pages/academicStats/AcademicsStats')));
@@ -37,6 +38,10 @@ const FullLayout = Loadable(lazy(() => import('../layouts/full/FullLayout')));
 //   return user ? children : <Navigate to="/auth/auth2/login" replace />;
 // };
 const Router = [
+  {
+    path: '/login',
+    element: <Login />,
+  },
   {
     path: '/',
     element: <FullLayout />,
