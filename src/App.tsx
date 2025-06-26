@@ -7,6 +7,7 @@ function App() {
   return (
     <>
       <ThemeModeScript />
+
       <Flowbite theme={{ theme: customTheme }}>
         <ToastContainer />
         <RouterProvider router={router} />

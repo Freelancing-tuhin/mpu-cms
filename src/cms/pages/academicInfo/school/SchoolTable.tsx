@@ -2,10 +2,12 @@ import { Icon } from '@iconify/react/dist/iconify.js';
 import { Table, Pagination, Button } from 'flowbite-react';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
+import { deleteSchool } from 'src/services/school';
+import EditSchoolModal from './editSchoolModal';
 
 const SchoolTable = ({ schools, totalPages, getSchools, searchText }: any) => {
-  const [, setEditedSchool] = useState();
-  const [, setOpenEditModal] = useState(false);
+  const [editedSchool, setEditedSchool] = useState();
+  const [openEditModal, setOpenEditModal] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
 
   const OpenModal = (data: any) => {
@@ -13,14 +15,14 @@ const SchoolTable = ({ schools, totalPages, getSchools, searchText }: any) => {
     setEditedSchool(data);
   };
 
-  //   const handleDeleteSchool = async () => {
-  //     try {
-  //       //   await deleteSchool(schoolId);
-  //       getSchools(currentPage);
-  //     } catch (error) {
-  //       console.error('Failed to delete school:', error);
-  //     }
-  //   };
+  const handleDeleteSchool = async (id: any) => {
+    try {
+      await deleteSchool(id);
+      getSchools(currentPage);
+    } catch (error) {
+      console.error('Failed to delete school:', error);
+    }
+  };
 
   useEffect(() => {
     getSchools(currentPage);
@@ -47,7 +49,7 @@ const SchoolTable = ({ schools, totalPages, getSchools, searchText }: any) => {
                   <img
                     src={item?.logo || '/placeholder.png'}
                     alt="Logo"
-                    className="h-14 w-14 rounded object-contain"
+                    className="h-16 w-16 rounded object-contain"
                   />
                 </Table.Cell>
                 <Table.Cell className="font-medium text-gray-900 dark:text-white">
@@ -73,7 +75,7 @@ const SchoolTable = ({ schools, totalPages, getSchools, searchText }: any) => {
                     color="blue"
                     size="xs"
                     className="bg-red-500"
-                    // onClick={() => handleDeleteSchool(item._id)}
+                    onClick={() => handleDeleteSchool(item._id)}
                   >
                     <Icon icon="hugeicons:delete-03" height="19" />
                   </Button>
@@ -92,12 +94,12 @@ const SchoolTable = ({ schools, totalPages, getSchools, searchText }: any) => {
         />
       </div>
 
-      {/* <EditSchoolModal
-        schoolData={editedSchool}
-        open={openEditModal}
-        onClose={() => setOpenEditModal(false)}
-        getSchools={() => getSchools(currentPage)}
-      /> */}
+      <EditSchoolModal
+        data={editedSchool}
+        getSchools={getSchools}
+        setIsOpen={setOpenEditModal}
+        isOpen={openEditModal}
+      />
     </>
   );
 };

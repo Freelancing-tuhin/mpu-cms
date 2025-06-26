@@ -2,27 +2,9 @@ import { useEffect, useState } from 'react';
 import BreadcrumbComp from 'src/layouts/full/shared/breadcrumb/BreadcrumbComp';
 import CardBox from 'src/components/shared/CardBox';
 import SearchBox from 'src/components/shared/SearchBox';
-import { IoMdAddCircleOutline } from 'react-icons/io';
 import SchoolTable from './SchoolTable';
-
-const dummySchoolData: any = [
-  {
-    _id: '1',
-    order: 1,
-    title: 'Patel College Of Science & Technology',
-    brief: 'A leading school focused on academic excellence.',
-    logo: 'https://mpu.ac.in/uploads/neeti-2024/PCST.png',
-    link_url: 'https://greenvalley.edu',
-  },
-  {
-    _id: '2',
-    order: 2,
-    title: ' Faculty of Medical and Paramedical Sciences',
-    brief: 'Empowering students for a better tomorrow.',
-    logo: 'https://mpu.ac.in/uploads/new_icons/drugstore.png',
-    link_url: 'https://blueridgeacademy.edu',
-  },
-];
+import CreateSchoolModal from './CreateSchoolModal';
+import { getAllSchools } from 'src/services/school';
 
 const School = () => {
   const BCrumb = [
@@ -31,19 +13,32 @@ const School = () => {
     { title: 'School' },
   ];
 
-  const [schools, setSchools] = useState([]);
-  const [totalPages] = useState(1);
+  const [schools, setSchools] = useState<any[]>([]);
+  const [totalPages, setTotalPages] = useState(1);
   const [searchText, setSearchText] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  // Fetch all schools from API
+  const getSchools = async () => {
+    try {
+      setLoading(true);
+      const response = await getAllSchools();
+      setSchools(response.result); // assuming response = { result: [...] }
+    } catch (error) {
+      console.error('Failed to fetch schools:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    // Using dummy data for now
-    setSchools(dummySchoolData);
+    getSchools();
   }, []);
 
-  const getSchools = () => {
-    // For dummy: just update page (future: add pagination logic)
-    setSchools(dummySchoolData);
-  };
+  // Search filter (client-side)
+  const filteredSchools = schools.filter((school) =>
+    school.title?.toLowerCase().includes(searchText.toLowerCase()),
+  );
 
   return (
     <div>
@@ -52,17 +47,15 @@ const School = () => {
       <CardBox>
         <div className="flex justify-between items-center mb-4">
           <SearchBox value={searchText} onChange={(e: any) => setSearchText(e.target.value)} />
-          <button className="bg-blue-500 flex items-center gap-1 text-white px-4 py-2.5 rounded-md hover:bg-blue-600 transition-all">
-            <IoMdAddCircleOutline className="text-lg" size={20} />
-            Add School
-          </button>
+          <CreateSchoolModal getSchools={getSchools} />
         </div>
 
         <SchoolTable
-          schools={schools}
+          schools={filteredSchools}
           totalPages={totalPages}
           getSchools={getSchools}
           searchText={searchText}
+          loading={loading}
         />
       </CardBox>
     </div>
