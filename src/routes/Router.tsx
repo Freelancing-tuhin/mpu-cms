@@ -5,6 +5,7 @@ import { createBrowserRouter } from 'react-router';
 import Loadable from '../layouts/full/shared/loadable/Loadable';
 import School from 'src/cms/pages/academicInfo/school/School';
 import CampusLife from 'src/cms/pages/academicInfo/campus/campus';
+import FactFigure from 'src/cms/pages/academicStats/factFigure';
 
 const AcademicInfo = Loadable(lazy(() => import('src/cms/pages/academicInfo/AcademicInfo')));
 const AcademicsStats = Loadable(lazy(() => import('src/cms/pages/academicStats/AcademicsStats')));
@@ -108,6 +109,15 @@ const Router = [
         element: (
           <>
             <CampusLife />
+          </>
+        ),
+      },
+      {
+        path: '/academic-statistics/fact-figures',
+        exact: true,
+        element: (
+          <>
+            <FactFigure />
           </>
         ),
       },

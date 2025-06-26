@@ -10,21 +10,25 @@ const AcademicsStats = () => {
       title: 'Fact Figures',
       subtitle: 'Key institutional metrics',
       icon: 'tabler:chart-infographic',
+      link: '/academic-statistics/fact-figures',
     },
     {
       title: 'Recruiters',
       subtitle: 'Top hiring partners',
       icon: 'fluent:people-community-28-regular',
+      link: '/academic-statistics/recruiters',
     },
     {
       title: 'Placements',
       subtitle: 'Student placement data',
       icon: 'solar:hand-money-linear',
+      link: '/academic-statistics/placements',
     },
     {
       title: 'Testimonials',
       subtitle: 'What people say about us',
       icon: 'ph:quote-duotone',
+      link: '/academic-statistics/testimonials',
     },
   ];
 
@@ -34,7 +38,13 @@ const AcademicsStats = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-6">
         {items.map((item) => (
-          <SubLinks key={uniqueId()} icon={item.icon} title={item.title} subtitle={item.subtitle} />
+          <SubLinks
+            key={uniqueId()}
+            icon={item.icon}
+            title={item.title}
+            subtitle={item.subtitle}
+            link={item?.link}
+          />
         ))}
       </div>
     </div>
