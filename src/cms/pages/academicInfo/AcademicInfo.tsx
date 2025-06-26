@@ -15,7 +15,7 @@ const AcademicInfo = () => {
       title: 'Campus Life',
       subtitle: 'Explore campus activities',
       icon: 'ph:tree-duotone', // 🌳 modern campus/culture icon
-      link: '/academic/campus-life',
+      link: '/academic/CampusLife',
     },
     {
       title: 'Admissions',

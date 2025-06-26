@@ -1,31 +1,31 @@
-import { Icon } from '@iconify/react/dist/iconify.js';
+import { Icon } from '@iconify/react';
 import { Table, Pagination, Button } from 'flowbite-react';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
-import { deleteSchool } from 'src/services/school';
-import EditSchoolModal from './EditSchoolModal';
+import { deleteCampusLifeHighlight } from 'src/services/campus';
+import EditCampusLifeModal from './EditCampusLifeModal';
 
-const SchoolTable = ({ schools, totalPages, getSchools, searchText }: any) => {
-  const [editedSchool, setEditedSchool] = useState();
+const CampusLifeTable = ({ highlights, totalPages, getHighlights, searchText }: any) => {
+  const [editedItem, setEditedItem] = useState<any>(null);
   const [openEditModal, setOpenEditModal] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
 
   const OpenModal = (data: any) => {
     setOpenEditModal(true);
-    setEditedSchool(data);
+    setEditedItem(data);
   };
 
-  const handleDeleteSchool = async (id: any) => {
+  const handleDelete = async (id: any) => {
     try {
-      await deleteSchool(id);
-      getSchools(currentPage);
+      await deleteCampusLifeHighlight(id);
+      getHighlights(currentPage);
     } catch (error) {
-      console.error('Failed to delete school:', error);
+      console.error('Failed to delete highlight:', error);
     }
   };
 
   useEffect(() => {
-    getSchools(currentPage);
+    getHighlights(currentPage);
   }, [currentPage, searchText]);
 
   return (
@@ -34,21 +34,20 @@ const SchoolTable = ({ schools, totalPages, getSchools, searchText }: any) => {
         <Table hoverable>
           <Table.Head>
             <Table.HeadCell>Order</Table.HeadCell>
-            <Table.HeadCell>Logo</Table.HeadCell>
+            <Table.HeadCell>Image</Table.HeadCell>
             <Table.HeadCell>Title</Table.HeadCell>
             <Table.HeadCell>Brief</Table.HeadCell>
             <Table.HeadCell>Action</Table.HeadCell>
           </Table.Head>
 
           <Table.Body className="divide-y divide-border dark:divide-darkborder">
-            {schools.map((item: any) => (
+            {highlights.map((item: any) => (
               <Table.Row key={item?._id}>
                 <Table.Cell>{item?.order ?? '-'}</Table.Cell>
-
                 <Table.Cell>
                   <img
-                    src={item?.logo || '/placeholder.png'}
-                    alt="Logo"
+                    src={item?.featured_image || '/placeholder.png'}
+                    alt="Highlight"
                     className="h-16 w-16 rounded object-contain"
                   />
                 </Table.Cell>
@@ -56,7 +55,6 @@ const SchoolTable = ({ schools, totalPages, getSchools, searchText }: any) => {
                   {item?.title || '-'}
                 </Table.Cell>
                 <Table.Cell className="max-w-xs truncate">{item?.brief || '-'}</Table.Cell>
-
                 <Table.Cell className="flex gap-2 items-center">
                   <Link to={item?.link_url || '#'} target="_blank">
                     <Button color="blue" size="xs" className="bg-blue-500">
@@ -75,7 +73,7 @@ const SchoolTable = ({ schools, totalPages, getSchools, searchText }: any) => {
                     color="blue"
                     size="xs"
                     className="bg-red-500"
-                    onClick={() => handleDeleteSchool(item._id)}
+                    onClick={() => handleDelete(item._id)}
                   >
                     <Icon icon="hugeicons:delete-03" height="19" />
                   </Button>
@@ -94,9 +92,9 @@ const SchoolTable = ({ schools, totalPages, getSchools, searchText }: any) => {
         />
       </div>
 
-      <EditSchoolModal
-        data={editedSchool}
-        getSchools={getSchools}
+      <EditCampusLifeModal
+        data={editedItem}
+        getHighlights={getHighlights}
         setIsOpen={setOpenEditModal}
         isOpen={openEditModal}
       />
@@ -104,4 +102,4 @@ const SchoolTable = ({ schools, totalPages, getSchools, searchText }: any) => {
   );
 };
 
-export default SchoolTable;
+export default CampusLifeTable;

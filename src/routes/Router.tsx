@@ -4,6 +4,7 @@ import { lazy, useContext } from 'react';
 import { createBrowserRouter } from 'react-router';
 import Loadable from '../layouts/full/shared/loadable/Loadable';
 import School from 'src/cms/pages/academicInfo/school/School';
+import CampusLife from 'src/cms/pages/academicInfo/campus/campus';
 
 const AcademicInfo = Loadable(lazy(() => import('src/cms/pages/academicInfo/AcademicInfo')));
 const AcademicsStats = Loadable(lazy(() => import('src/cms/pages/academicStats/AcademicsStats')));
@@ -98,6 +99,15 @@ const Router = [
         element: (
           <>
             <School />
+          </>
+        ),
+      },
+      {
+        path: '/academic/CampusLife',
+        exact: true,
+        element: (
+          <>
+            <CampusLife />
           </>
         ),
       },
