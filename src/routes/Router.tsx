@@ -6,6 +6,9 @@ import Loadable from '../layouts/full/shared/loadable/Loadable';
 import School from 'src/cms/pages/academicInfo/school/School';
 import CampusLife from 'src/cms/pages/academicInfo/campus/campus';
 import FactFigure from 'src/cms/pages/academicStats/factFigure';
+import Recruiter from 'src/cms/pages/academicStats/recruiter';
+import Placement from 'src/cms/pages/academicStats/placement';
+import Testimonial from 'src/cms/pages/academicStats/testimonial';
 
 const AcademicInfo = Loadable(lazy(() => import('src/cms/pages/academicInfo/AcademicInfo')));
 const AcademicsStats = Loadable(lazy(() => import('src/cms/pages/academicStats/AcademicsStats')));
@@ -118,6 +121,33 @@ const Router = [
         element: (
           <>
             <FactFigure />
+          </>
+        ),
+      },
+      {
+        path: '/academic-statistics/recruiters',
+        exact: true,
+        element: (
+          <>
+            <Recruiter />
+          </>
+        ),
+      },
+      {
+        path: '/academic-statistics/placements',
+        exact: true,
+        element: (
+          <>
+            <Placement />
+          </>
+        ),
+      },
+      {
+        path: '/academic-statistics/testimonial',
+        exact: true,
+        element: (
+          <>
+            <Testimonial />
           </>
         ),
       },

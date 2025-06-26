@@ -28,7 +28,7 @@ const AcademicsStats = () => {
       title: 'Testimonials',
       subtitle: 'What people say about us',
       icon: 'ph:quote-duotone',
-      link: '/academic-statistics/testimonials',
+      link: '/academic-statistics/testimonial',
     },
   ];
 
