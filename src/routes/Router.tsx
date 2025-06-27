@@ -36,14 +36,6 @@ const UtilitiesExtras = Loadable(lazy(() => import('src/cms/pages/utilsExtra/Uti
 /* ***Layouts**** */
 const FullLayout = Loadable(lazy(() => import('../layouts/full/FullLayout')));
 
-/* ****Pages***** */
-// const Dashboard1 = Loadable(lazy(() => import('../views/dashboard/Dashboard1')));
-// const Dashboard2 = Loadable(lazy(() => import('../views/dashboard/Dashboard2')));
-
-// const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
-//   const { user }: any = useContext(AuthContext);
-//   return user ? children : <Navigate to="/auth/auth2/login" replace />;
-// };
 const Router = [
   {
     path: '/login',
