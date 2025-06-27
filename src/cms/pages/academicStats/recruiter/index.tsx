@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react';
 import BreadcrumbComp from 'src/layouts/full/shared/breadcrumb/BreadcrumbComp';
 import CardBox from 'src/components/shared/CardBox';
-import SearchBox from 'src/components/shared/SearchBox';
 import { getAllRecruiters } from 'src/services/recruiter';
 import CreateRecruiterModal from './CreateRecruiterModal';
 import RecruiterTable from './RecruiterTable';
 
 const Recruiter = () => {
   const [recruiters, setRecruiters] = useState<any[]>([]);
-  const [searchText, setSearchText] = useState('');
+  const [searchText] = useState('');
   const [loading, setLoading] = useState(false);
 
   const BCrumb = [
@@ -42,7 +41,6 @@ const Recruiter = () => {
       <BreadcrumbComp title="Recruiters" items={BCrumb} />
       <CardBox>
         <div className="flex justify-between items-center mb-4">
-          <SearchBox value={searchText} onChange={(e: any) => setSearchText(e.target.value)} />
           <CreateRecruiterModal getRecruiters={getRecruiters} />
         </div>
         <RecruiterTable recruiters={filtered} getRecruiters={getRecruiters} loading={loading} />

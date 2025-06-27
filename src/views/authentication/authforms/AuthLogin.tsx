@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
-import { Link, useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
 import { AuthContext } from 'src/context/authContext/AuthContext';
 
 const AuthLogin = () => {

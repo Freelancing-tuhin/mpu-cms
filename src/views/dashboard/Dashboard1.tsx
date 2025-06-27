@@ -1,20 +1,18 @@
-import { getBasicData } from 'src/service/dashBoard';
+// import { getBasicData } from 'src/service/dashBoard';
 import Customer from '../../components/dashboards/Dashboard1/Customer';
 import Project from '../../components/dashboards/Dashboard1/Project';
 import RevenueForcast from '../../components/dashboards/Dashboard1/RevenueForcast';
 import WelcomeBox from '../../components/dashboards/Dashboard1/WelcomeBox';
-import { useContext, useEffect, useState } from 'react';
-import { AuthContext } from 'src/context/authContext/AuthContext';
+import { useEffect, useState } from 'react';
 // import LockScreen from '../authentication/lockScreen/LockScreen';
 
 const Dashboard1 = () => {
-  const [basicData, setBasicData] = useState<any>();
-  const { user }: any = useContext(AuthContext);
+  const [basicData] = useState<any>();
   const getBaseData = async () => {
     try {
-      const organizerId = user?._id;
-      const response = await getBasicData(organizerId);
-      setBasicData(response);
+      // const organizerId = user?._id;
+      // const response = await getBasicData(organizerId);
+      // setBasicData(response);
     } catch (error) {}
   };
 

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { deleteAnnouncement } from 'src/services/announcement';
 import EditAnnouncementModal from './EditAnnouncementModal';
 
-const AnnouncementTable = ({ announcements, refresh, loading }: any) => {
+const AnnouncementTable = ({ announcements, refresh }: any) => {
   const [editData, setEditData] = useState<any>(null);
   const [open, setOpen] = useState(false);
 

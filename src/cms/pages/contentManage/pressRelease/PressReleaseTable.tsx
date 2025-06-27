@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { deletePressRelease } from 'src/services/pressRelease';
 import EditPressReleaseModal from './EditPressReleaseModal';
 
-const PressReleaseTable = ({ releases, refresh, loading }: any) => {
+const PressReleaseTable = ({ releases, refresh }: any) => {
   const [editData, setEditData] = useState<any>(null);
   const [open, setOpen] = useState(false);
 

@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import BreadcrumbComp from 'src/layouts/full/shared/breadcrumb/BreadcrumbComp';
 import CardBox from 'src/components/shared/CardBox';
-import SearchBox from 'src/components/shared/SearchBox';
 import SchoolTable from './SchoolTable';
 import CreateSchoolModal from './CreateSchoolModal';
 import { getAllSchools } from 'src/services/school';
@@ -14,8 +13,8 @@ const School = () => {
   ];
 
   const [schools, setSchools] = useState<any[]>([]);
-  const [totalPages, setTotalPages] = useState(1);
-  const [searchText, setSearchText] = useState('');
+  const [totalPages] = useState(1);
+  const [searchText] = useState('');
   const [loading, setLoading] = useState(false);
 
   // Fetch all schools from API
@@ -46,7 +45,7 @@ const School = () => {
 
       <CardBox>
         <div className="flex justify-between items-center mb-4">
-          <SearchBox value={searchText} onChange={(e: any) => setSearchText(e.target.value)} />
+          {/*  */}
           <CreateSchoolModal getSchools={getSchools} />
         </div>
 

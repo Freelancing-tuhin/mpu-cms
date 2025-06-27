@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { deleteCarousel } from 'src/services/carousel';
 import EditCarouselModal from './EditCarouselModal';
 
-const CarouselTable = ({ slides, refresh, loading }: any) => {
+const CarouselTable = ({ slides, refresh }: any) => {
   const [editData, setEditData] = useState<any>(null);
   const [open, setOpen] = useState(false);
 

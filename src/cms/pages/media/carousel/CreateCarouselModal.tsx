@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { IoMdAddCircleOutline } from 'react-icons/io';
 import { MdClose } from 'react-icons/md';
 import { FaImage } from 'react-icons/fa6';
-import { createCarousel, ICarousel } from 'src/services/carousel';
+import { createCarousel } from 'src/services/carousel';
 
 declare global {
   interface Window {

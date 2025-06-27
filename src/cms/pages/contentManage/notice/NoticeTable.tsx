@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { deleteNotice } from 'src/services/notice';
 import EditNoticeModal from './EditNoticeModal';
 
-const NoticeTable = ({ notices, refresh, loading }: any) => {
+const NoticeTable = ({ notices, refresh }: any) => {
   const [editData, setEditData] = useState<any>(null);
   const [open, setOpen] = useState(false);
 

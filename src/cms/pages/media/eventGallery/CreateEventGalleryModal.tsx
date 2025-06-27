@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { IoMdAddCircleOutline } from 'react-icons/io';
 import { MdClose } from 'react-icons/md';
 import { FaImage } from 'react-icons/fa6';
-import { createEventGallery, IEventGallery } from 'src/services/eventGallery';
+import { createEventGallery } from 'src/services/eventGallery';
 
 declare global {
   interface Window {
@@ -12,7 +12,7 @@ declare global {
 
 const CreateEventGalleryModal = ({ refresh }: { refresh: () => void }) => {
   const [open, setOpen] = useState(false);
-  const [form, setForm] = useState<IEventGallery>({
+  const [form, setForm] = useState<any>({
     title: '',
     tag: '',
     date: new Date().toISOString().slice(0, 10),
@@ -28,7 +28,7 @@ const CreateEventGalleryModal = ({ refresh }: { refresh: () => void }) => {
   }, []);
 
   const toggle = () => setOpen((v) => !v);
-  const change = (e: any) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
+  const change = (e: any) => setForm((f: any) => ({ ...f, [e.target.name]: e.target.value }));
 
   const upload = () => {
     window.cloudinary
@@ -44,7 +44,7 @@ const CreateEventGalleryModal = ({ refresh }: { refresh: () => void }) => {
         },
         (_err: any, result: any) => {
           if (result.event === 'success') {
-            setForm((f) => ({ ...f, cover_photo: result.info.secure_url }));
+            setForm((f: any) => ({ ...f, cover_photo: result.info.secure_url }));
           }
         },
       )

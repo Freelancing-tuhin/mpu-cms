@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { deleteGallery } from 'src/services/gallery';
 import EditGalleryModal from './EditGalleryModal';
 
-const GalleryTable = ({ items, refresh, loading }: any) => {
+const GalleryTable = ({ items, refresh }: any) => {
   const [editData, setEditData] = useState<any>(null);
   const [open, setOpen] = useState(false);
 

@@ -1,12 +1,10 @@
 import { Icon } from '@iconify/react';
-import { Badge, Dropdown } from 'flowbite-react';
-import * as profileData from './Data';
+import { Dropdown } from 'flowbite-react';
 import SimpleBar from 'simplebar-react';
-import { Link } from 'react-router';
 import { AuthContext } from 'src/context/authContext/AuthContext';
 import { useContext } from 'react';
 const Profile = () => {
-  const { user, logout }: any = useContext(AuthContext);
+  const { logout }: any = useContext(AuthContext);
 
   const handleLogout = () => {
     logout(); // Clears user data from context and localStorage

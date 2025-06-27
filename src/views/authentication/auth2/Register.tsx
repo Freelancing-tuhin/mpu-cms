@@ -1,14 +1,11 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import CardBox from 'src/components/shared/CardBox';
 import { Button, Label, TextInput } from 'flowbite-react';
 import FullLogo from 'src/layouts/full/shared/logo/FullLogo';
-import { organizerSignup } from 'src/service/auth';
 import { Link, useNavigate } from 'react-router';
 import BoxedSocialButtons from '../authforms/BoxedSocialButtons';
-import { AuthContext } from 'src/context/authContext/AuthContext';
 
 const Register = () => {
-  const { login }: any = useContext(AuthContext);
   const navigate = useNavigate();
   const [formData, setFormData] = useState<any>({
     full_name: '',
@@ -44,9 +41,7 @@ const Register = () => {
     setError('');
     setSuccess('');
     try {
-      const response = await organizerSignup(formData);
       setSuccess('Signup Successful!');
-      login(response?.result);
       navigate('/apps/user-profile/profile');
     } catch (err: any) {
       setError(err?.message || 'Signup failed!');

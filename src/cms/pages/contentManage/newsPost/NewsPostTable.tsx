@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { deleteNewsPost } from 'src/services/newsPost';
 import EditNewsPostModal from './EditNewsPostModal';
 
-const NewsPostTable = ({ posts, refresh, loading }: any) => {
+const NewsPostTable = ({ posts, refresh }: any) => {
   const [editData, setEditData] = useState<any>(null);
   const [open, setOpen] = useState(false);
 

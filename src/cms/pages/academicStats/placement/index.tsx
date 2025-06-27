@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react';
 import BreadcrumbComp from 'src/layouts/full/shared/breadcrumb/BreadcrumbComp';
 import CardBox from 'src/components/shared/CardBox';
-import SearchBox from 'src/components/shared/SearchBox';
 import { getAllPlacements } from 'src/services/placement';
 import CreatePlacementModal from './CreatePlacementModal';
 import PlacementTable from './PlacementTable';
 
 const Placement = () => {
   const [placements, setPlacements] = useState<any[]>([]);
-  const [searchText, setSearchText] = useState('');
+  const [searchText] = useState('');
   const [loading, setLoading] = useState(false);
 
   const BCrumb = [
@@ -42,7 +41,6 @@ const Placement = () => {
       <BreadcrumbComp title="Placements" items={BCrumb} />
       <CardBox>
         <div className="flex justify-between items-center mb-4">
-          <SearchBox value={searchText} onChange={(e: any) => setSearchText(e.target.value)} />
           <CreatePlacementModal getPlacements={getPlacements} />
         </div>
         <PlacementTable placements={filtered} getPlacements={getPlacements} loading={loading} />

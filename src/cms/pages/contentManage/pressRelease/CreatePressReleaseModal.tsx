@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { IoMdAddCircleOutline } from 'react-icons/io';
 import { MdClose } from 'react-icons/md';
 import { FaImage } from 'react-icons/fa6';
-import { createPressRelease, IPressRelease } from 'src/services/pressRelease';
+import { createPressRelease } from 'src/services/pressRelease';
 
 declare global {
   interface Window {
@@ -12,7 +12,7 @@ declare global {
 
 const CreatePressReleaseModal = ({ refresh }: { refresh: () => void }) => {
   const [open, setOpen] = useState(false);
-  const [form, setForm] = useState<IPressRelease>({
+  const [form, setForm] = useState<any>({
     date: new Date().toISOString().slice(0, 10),
     title: '',
     scanned_jpg: '',
@@ -26,7 +26,7 @@ const CreatePressReleaseModal = ({ refresh }: { refresh: () => void }) => {
   }, []);
 
   const toggle = () => setOpen((v) => !v);
-  const change = (e: any) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
+  const change = (e: any) => setForm((f: any) => ({ ...f, [e.target.name]: e.target.value }));
 
   const upload = () => {
     window.cloudinary
@@ -41,7 +41,7 @@ const CreatePressReleaseModal = ({ refresh }: { refresh: () => void }) => {
         },
         (_err: any, result: any) => {
           if (result.event === 'success')
-            setForm((f) => ({ ...f, scanned_jpg: result.info.secure_url }));
+            setForm((f: any) => ({ ...f, scanned_jpg: result.info.secure_url }));
         },
       )
       .open();

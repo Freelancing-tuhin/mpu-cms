@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
-import { IoMdAddCircleOutline } from 'react-icons/io';
 import { MdClose } from 'react-icons/md';
 import { FaImage } from 'react-icons/fa6';
-import { createSchool, updateSchool } from 'src/services/school';
+import { updateSchool } from 'src/services/school';
 
 declare global {
   interface Window {

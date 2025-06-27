@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { deleteYouTube } from 'src/services/youtube';
 import EditYouTubeModal from './EditYouTubeModal';
 
-const YouTubeTable = ({ items, refresh, loading }: any) => {
+const YouTubeTable = ({ items, refresh }: any) => {
   const [editData, setEditData] = useState<any>(null);
   const [open, setOpen] = useState(false);
 

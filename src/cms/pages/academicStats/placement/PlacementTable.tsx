@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { deletePlacement } from 'src/services/placement';
 import EditPlacementModal from './EditPlacementModal';
 
-const PlacementTable = ({ placements, getPlacements, loading }: any) => {
+const PlacementTable = ({ placements, getPlacements }: any) => {
   const [editData, setEditData] = useState<any>(null);
   const [open, setOpen] = useState(false);
 

@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import BreadcrumbComp from 'src/layouts/full/shared/breadcrumb/BreadcrumbComp';
 import CardBox from 'src/components/shared/CardBox';
-import SearchBox from 'src/components/shared/SearchBox';
 // import CampusLifeTable from './CampusLifeTable';
 // import CreateCampusLifeModal from './CreateCampusLifeModal';
 import { getAllCampusLifeHighlights } from 'src/services/campus'; // <- your API service
@@ -16,8 +15,8 @@ const CampusLife = () => {
   ];
 
   const [highlights, setHighlights] = useState<any[]>([]);
-  const [totalPages, setTotalPages] = useState(1);
-  const [searchText, setSearchText] = useState('');
+  const [totalPages] = useState(1);
+  const [searchText] = useState<any>('');
   const [loading, setLoading] = useState(false);
 
   // Fetch highlights from API
@@ -47,7 +46,7 @@ const CampusLife = () => {
 
       <CardBox>
         <div className="flex justify-between items-center mb-4">
-          <SearchBox value={searchText} onChange={(e: any) => setSearchText(e.target.value)} />
+          {/*  */}
           <CreateCampusLifeModal getHighlights={getHighlights} />
         </div>
 

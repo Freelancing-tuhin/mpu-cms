@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { IoMdAddCircleOutline } from 'react-icons/io';
 import { MdClose } from 'react-icons/md';
-import { createNotice, INotice } from 'src/services/notice';
+import { createNotice } from 'src/services/notice';
 
 const CreateNoticeModal = ({ refresh }: { refresh: () => void }) => {
   const [open, setOpen] = useState(false);

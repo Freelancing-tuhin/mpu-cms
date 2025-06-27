@@ -1,10 +1,10 @@
 import { Table, Button } from 'flowbite-react';
 import { Icon } from '@iconify/react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { deleteRecruiter } from 'src/services/recruiter';
 import EditRecruiterModal from './EditRecruiterModal';
 
-const RecruiterTable = ({ recruiters, getRecruiters, loading }: any) => {
+const RecruiterTable = ({ recruiters, getRecruiters }: any) => {
   const [editData, setEditData] = useState<any>(null);
   const [open, setOpen] = useState(false);
 

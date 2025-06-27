@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { IoMdAddCircleOutline } from 'react-icons/io';
 import { MdClose } from 'react-icons/md';
-import { createDownload, IDownload } from 'src/services/download';
+import { createDownload } from 'src/services/download';
 
 export default function CreateDownloadModal({ refresh }: { refresh: () => void }) {
   const [open, setOpen] = useState(false);

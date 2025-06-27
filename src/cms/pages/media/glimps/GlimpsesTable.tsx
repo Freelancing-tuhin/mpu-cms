@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { deleteGlimpses } from 'src/services/glimpses';
 import EditGlimpsesModal from './EditGlimpsesModal';
 
-const GlimpsesTable = ({ items, refresh, loading }: any) => {
+const GlimpsesTable = ({ items, refresh }: any) => {
   const [editItem, setEditItem] = useState<any>(null);
   const [open, setOpen] = useState(false);
 

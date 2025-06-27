@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { deleteTestimonial } from 'src/services/testimonial';
 import EditTestimonialModal from './EditTestimonialModal';
 
-const TestimonialTable = ({ items, refresh, loading }: any) => {
+const TestimonialTable = ({ items, refresh }: any) => {
   const [editItem, setEditItem] = useState<any>(null);
   const [open, setOpen] = useState(false);
 

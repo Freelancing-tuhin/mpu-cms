@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react';
 import BreadcrumbComp from 'src/layouts/full/shared/breadcrumb/BreadcrumbComp';
 import CardBox from 'src/components/shared/CardBox';
-import SearchBox from 'src/components/shared/SearchBox';
 import { getAllAcademicHighlights } from 'src/services/academicHighlights';
 import CreateAcademicHighlightModal from './CreateAcademicHighlightModal';
 import AcademicHighlightsTable from './AcademicHighlightsTable';
 
 export default function AcademicHighlights() {
   const [items, setItems] = useState<any[]>([]);
-  const [searchText, setSearchText] = useState('');
+  const [searchText] = useState('');
   const [loading, setLoading] = useState(false);
 
   const fetch = async () => {
@@ -36,7 +35,6 @@ export default function AcademicHighlights() {
       />
       <CardBox>
         <div className="flex justify-between items-center mb-4">
-          <SearchBox value={searchText} onChange={(e: any) => setSearchText(e.target.value)} />
           <CreateAcademicHighlightModal refresh={fetch} />
         </div>
         <AcademicHighlightsTable items={filtered} refresh={fetch} loading={loading} />

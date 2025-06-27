@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { deleteDownload } from 'src/services/download';
 import EditDownloadModal from './EditDownloadModal';
 
-export default function DownloadTable({ items, refresh, loading }: any) {
+export default function DownloadTable({ items, refresh }: any) {
   const [editData, setEditData] = useState<any>(null);
   const [open, setOpen] = useState(false);
 

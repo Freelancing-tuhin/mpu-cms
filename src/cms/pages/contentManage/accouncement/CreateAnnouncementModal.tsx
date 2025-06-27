@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { IoMdAddCircleOutline } from 'react-icons/io';
 import { MdClose } from 'react-icons/md';
-import { createAnnouncement, IAnnouncement } from 'src/services/announcement';
+import { createAnnouncement } from 'src/services/announcement';
 
 const CreateAnnouncementModal = ({ refresh }: { refresh: () => void }) => {
   const [open, setOpen] = useState(false);

@@ -1,7 +1,5 @@
-import Logo from 'src/layouts/full/shared/logo/Logo';
 import { Link } from 'react-router';
 import AuthLogin from '../authforms/AuthLogin';
-import SocialButtons from '../authforms/SocialButtons';
 import LeftSidebarPart from '../LeftSidebarPart';
 
 const Login = () => {

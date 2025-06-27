@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react';
 import BreadcrumbComp from 'src/layouts/full/shared/breadcrumb/BreadcrumbComp';
 import CardBox from 'src/components/shared/CardBox';
-import SearchBox from 'src/components/shared/SearchBox';
 import { getAllGalleries } from 'src/services/gallery';
 import CreateGalleryModal from './CreateGalleryModal';
 import GalleryTable from './GalleryTable';
 
 const Gallery = () => {
   const [items, setItems] = useState<any[]>([]);
-  const [searchText, setSearchText] = useState('');
+  const [searchText] = useState('');
   const [loading, setLoading] = useState(false);
 
   const crumbs = [{ to: '/', title: 'Dashboard' }, { title: 'Galleries' }];
@@ -36,7 +35,6 @@ const Gallery = () => {
       <BreadcrumbComp title="Galleries" items={crumbs} />
       <CardBox>
         <div className="flex justify-between items-center mb-4">
-          <SearchBox value={searchText} onChange={(e: any) => setSearchText(e.target.value)} />
           <CreateGalleryModal refresh={fetch} />
         </div>
         <GalleryTable items={filtered} refresh={fetch} loading={loading} />

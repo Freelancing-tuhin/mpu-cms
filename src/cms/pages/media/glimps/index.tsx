@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react';
 import BreadcrumbComp from 'src/layouts/full/shared/breadcrumb/BreadcrumbComp';
 import CardBox from 'src/components/shared/CardBox';
-import SearchBox from 'src/components/shared/SearchBox';
 import { getAllGlimpses } from 'src/services/glimpses';
 import CreateGlimpsesModal from './CreateGlimpsesModal';
 import GlimpsesTable from './GlimpsesTable';
 
 const Glimpses = () => {
   const [items, setItems] = useState<any[]>([]);
-  const [searchText, setSearchText] = useState('');
+  const [searchText] = useState('');
   const [loading, setLoading] = useState(false);
 
   const crumbs = [{ to: '/', title: 'Dashboard' }, { title: 'Glimpses' }];
@@ -36,7 +35,6 @@ const Glimpses = () => {
       <BreadcrumbComp title="Glimpses" items={crumbs} />
       <CardBox>
         <div className="flex justify-between items-center mb-4">
-          <SearchBox value={searchText} onChange={(e: any) => setSearchText(e.target.value)} />
           <CreateGlimpsesModal refresh={fetch} />
         </div>
         <GlimpsesTable items={filtered} refresh={fetch} loading={loading} />

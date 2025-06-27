@@ -1,15 +1,12 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import CardBox from 'src/components/shared/CardBox';
 import BoxedAuthSlider from '../authforms/BoxedAuthSlider';
 import FullLogo from 'src/layouts/full/shared/logo/FullLogo';
 import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
 import { Link, useNavigate } from 'react-router';
-import { loginOrganizer } from 'src/service/auth';
-import { AuthContext } from 'src/context/authContext/AuthContext';
 
 const Login = () => {
   const navigate = useNavigate();
-  const { login }: any = useContext(AuthContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -21,12 +18,7 @@ const Login = () => {
     setError(null);
 
     try {
-      const data: any = await loginOrganizer(email, password);
-      console.log('Login successful:', data.result);
-
       // Save token in localStorage or context (if needed)
-      localStorage.setItem('authToken', data.token);
-      login(data.result);
 
       // Navigate to dashboard or home page
       navigate('/');

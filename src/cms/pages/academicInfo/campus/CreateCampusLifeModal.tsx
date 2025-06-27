@@ -33,7 +33,7 @@ const CreateCampusLifeModal = ({ getHighlights }: any) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await createCampusLifeHighlight(formData);
+      await createCampusLifeHighlight(formData);
       toggleModal();
       setFormData({
         order: '',

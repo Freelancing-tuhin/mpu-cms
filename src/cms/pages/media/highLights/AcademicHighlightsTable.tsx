@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { deleteAcademicHighlight } from 'src/services/academicHighlights';
 import EditAcademicHighlightModal from './EditAcademicHighlightModal';
 
-export default function AcademicHighlightsTable({ items, refresh, loading }: any) {
+export default function AcademicHighlightsTable({ items, refresh }: any) {
   const [editData, setEditData] = useState<any>(null);
   const [open, setOpen] = useState(false);
   const onEdit = (i: any) => {

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { IoMdAddCircleOutline } from 'react-icons/io';
 import { MdClose } from 'react-icons/md';
 import { FaImage } from 'react-icons/fa6';
-import { createNewsPost, INewsPost } from 'src/services/newsPost';
+import { createNewsPost } from 'src/services/newsPost';
 
 declare global {
   interface Window {
@@ -12,7 +12,7 @@ declare global {
 
 const CreateNewsPostModal = ({ refresh }: { refresh: () => void }) => {
   const [open, setOpen] = useState(false);
-  const [form, setForm] = useState<INewsPost>({
+  const [form, setForm] = useState<any>({
     date: new Date().toISOString().slice(0, 10),
     title: '',
     tag: '',
@@ -28,7 +28,7 @@ const CreateNewsPostModal = ({ refresh }: { refresh: () => void }) => {
   }, []);
 
   const toggle = () => setOpen((v) => !v);
-  const change = (e: any) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
+  const change = (e: any) => setForm((f: any) => ({ ...f, [e.target.name]: e.target.value }));
 
   const upload = () => {
     window.cloudinary
@@ -43,7 +43,7 @@ const CreateNewsPostModal = ({ refresh }: { refresh: () => void }) => {
         },
         (_err: any, res: any) => {
           if (res.event === 'success')
-            setForm((f) => ({ ...f, featured_image: res.info.secure_url }));
+            setForm((f: any) => ({ ...f, featured_image: res.info.secure_url }));
         },
       )
       .open();
