@@ -1,3 +1,4 @@
+import { link } from 'fs';
 import { uniqueId } from 'lodash';
 import SubLinks from 'src/cms/components/subLinks/SubLinks';
 import BreadcrumbComp from 'src/layouts/full/shared/breadcrumb/BreadcrumbComp';
@@ -7,24 +8,22 @@ const UtilitiesExtras = () => {
 
   const items = [
     {
-      title: 'Highlights',
-      subtitle: 'Campus & academic highlights',
-      icon: 'mdi:star-circle-outline',
-    },
-    {
       title: 'Downloads',
       subtitle: 'Syllabus, schemes & PDFs',
       icon: 'mdi:file-download-outline',
+      link: '/utils/downloads',
     },
     {
       title: 'Pop-Ups',
       subtitle: 'Homepage popup modals',
       icon: 'tabler:popup',
+      link: '/utils/popups',
     },
     {
       title: 'Quick Links',
       subtitle: 'Fast access to key pages',
       icon: 'carbon:link',
+      link: '/utils/quick-links',
     },
   ];
 
@@ -34,7 +33,13 @@ const UtilitiesExtras = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-6">
         {items.map((item) => (
-          <SubLinks key={uniqueId()} icon={item.icon} title={item.title} subtitle={item.subtitle} />
+          <SubLinks
+            key={uniqueId()}
+            icon={item.icon}
+            title={item.title}
+            subtitle={item.subtitle}
+            link={item?.link}
+          />
         ))}
       </div>
     </div>

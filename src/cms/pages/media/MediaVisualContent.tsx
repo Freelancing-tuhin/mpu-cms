@@ -43,6 +43,12 @@ const MediaVisualContent = () => {
       icon: 'material-symbols:folder-open',
       link: '/media/media-folder',
     },
+    {
+      title: 'Highlights',
+      subtitle: 'Campus & academic highlights',
+      icon: 'mdi:star-circle-outline',
+      link: '/media/highlights',
+    },
   ];
 
   return (

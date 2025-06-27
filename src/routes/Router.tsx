@@ -19,6 +19,8 @@ import Carousel from 'src/cms/pages/media/carousel';
 import Gallery from 'src/cms/pages/media/gallery';
 import Glimpses from 'src/cms/pages/media/glimps';
 import YouTube from 'src/cms/pages/media/youtube';
+import AcademicHighlights from 'src/cms/pages/media/highLights';
+import Downloads from 'src/cms/pages/utilsExtra/download';
 
 const AcademicInfo = Loadable(lazy(() => import('src/cms/pages/academicInfo/AcademicInfo')));
 const AcademicsStats = Loadable(lazy(() => import('src/cms/pages/academicStats/AcademicsStats')));
@@ -243,6 +245,25 @@ const Router = [
         element: (
           <>
             <YouTube />
+          </>
+        ),
+      },
+      {
+        path: '/media/highlights',
+        exact: true,
+        element: (
+          <>
+            <AcademicHighlights />
+          </>
+        ),
+      },
+
+      {
+        path: '/utils/downloads',
+        exact: true,
+        element: (
+          <>
+            <Downloads />
           </>
         ),
       },

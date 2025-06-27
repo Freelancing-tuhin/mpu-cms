@@ -12,7 +12,7 @@ declare global {
 
 const CreateCarouselModal = ({ refresh }: { refresh: () => void }) => {
   const [open, setOpen] = useState(false);
-  const [form, setForm] = useState<ICarousel>({
+  const [form, setForm] = useState<any>({
     order: null,
     title: '',
     text: '',
@@ -28,7 +28,7 @@ const CreateCarouselModal = ({ refresh }: { refresh: () => void }) => {
   }, []);
 
   const toggle = () => setOpen((v) => !v);
-  const change = (e: any) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
+  const change = (e: any) => setForm((f: any) => ({ ...f, [e.target.name]: e.target.value }));
 
   const upload = () => {
     window.cloudinary
@@ -44,7 +44,7 @@ const CreateCarouselModal = ({ refresh }: { refresh: () => void }) => {
         },
         (_err: any, result: any) => {
           if (result.event === 'success') {
-            setForm((f) => ({ ...f, slide_image: result.info.secure_url }));
+            setForm((f: any) => ({ ...f, slide_image: result.info.secure_url }));
           }
         },
       )

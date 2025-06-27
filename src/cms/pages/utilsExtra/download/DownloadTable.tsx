@@ -1,0 +1,65 @@
+import { Table, Button } from 'flowbite-react';
+import { Icon } from '@iconify/react';
+import { useState } from 'react';
+import { deleteDownload } from 'src/services/download';
+import EditDownloadModal from './EditDownloadModal';
+
+export default function DownloadTable({ items, refresh, loading }: any) {
+  const [editData, setEditData] = useState<any>(null);
+  const [open, setOpen] = useState(false);
+
+  const onEdit = (i: any) => {
+    setEditData(i);
+    setOpen(true);
+  };
+  const onDelete = async (id: string) => {
+    await deleteDownload(id);
+    refresh();
+  };
+
+  return (
+    <>
+      <div className="overflow-x-auto rounded border border-gray-300">
+        <Table hoverable>
+          <Table.Head>
+            <Table.HeadCell>Type</Table.HeadCell>
+            <Table.HeadCell>Programme</Table.HeadCell>
+            <Table.HeadCell>Title</Table.HeadCell>
+            <Table.HeadCell>PDF</Table.HeadCell>
+            <Table.HeadCell>Actions</Table.HeadCell>
+          </Table.Head>
+          <Table.Body className="divide-y">
+            {items.map((i: any) => (
+              <Table.Row key={i?._id}>
+                <Table.Cell>{i?.type}</Table.Cell>
+                <Table.Cell>{i?.programme}</Table.Cell>
+                <Table.Cell>{i?.title}</Table.Cell>
+                <Table.Cell>
+                  {i?.pdf_file && (
+                    <a
+                      href={`https://res-console.cloudinary.com/diefiwnp9/media_explorer_thumbnails/${i?.pdf_file}/download`}
+                      className="text-blue-600"
+                      download // Add the download attribute here
+                    >
+                      Download
+                    </a>
+                  )}
+                </Table.Cell>
+                <Table.Cell className="flex gap-2">
+                  <Button size="xs" color="gray" onClick={() => onEdit(i)}>
+                    <Icon icon="material-symbols:edit-document" />
+                  </Button>
+                  <Button size="xs" color="failure" onClick={() => onDelete(i._id)}>
+                    <Icon icon="hugeicons:delete-03" />
+                  </Button>
+                </Table.Cell>
+              </Table.Row>
+            ))}
+          </Table.Body>
+        </Table>
+      </div>
+
+      <EditDownloadModal data={editData} isOpen={open} setIsOpen={setOpen} refresh={refresh} />
+    </>
+  );
+}
