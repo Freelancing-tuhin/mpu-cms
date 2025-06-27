@@ -14,6 +14,11 @@ import PressRelease from 'src/cms/pages/contentManage/pressRelease';
 import Announcement from 'src/cms/pages/contentManage/accouncement';
 import Notice from 'src/cms/pages/contentManage/notice';
 import Login from 'src/views/authentication/auth1/Login';
+import EventGallery from 'src/cms/pages/media/eventGallery';
+import Carousel from 'src/cms/pages/media/carousel';
+import Gallery from 'src/cms/pages/media/gallery';
+import Glimpses from 'src/cms/pages/media/glimps';
+import YouTube from 'src/cms/pages/media/youtube';
 
 const AcademicInfo = Loadable(lazy(() => import('src/cms/pages/academicInfo/AcademicInfo')));
 const AcademicsStats = Loadable(lazy(() => import('src/cms/pages/academicStats/AcademicsStats')));
@@ -193,6 +198,51 @@ const Router = [
         element: (
           <>
             <Notice />
+          </>
+        ),
+      },
+      {
+        path: '/media/carousel',
+        exact: true,
+        element: (
+          <>
+            <Carousel />
+          </>
+        ),
+      },
+      {
+        path: '/media/event-gallery',
+        exact: true,
+        element: (
+          <>
+            <EventGallery />
+          </>
+        ),
+      },
+      {
+        path: '/media/gallery',
+        exact: true,
+        element: (
+          <>
+            <Gallery />
+          </>
+        ),
+      },
+      {
+        path: '/media/glimpses',
+        exact: true,
+        element: (
+          <>
+            <Glimpses />
+          </>
+        ),
+      },
+      {
+        path: '/media/videos',
+        exact: true,
+        element: (
+          <>
+            <YouTube />
           </>
         ),
       },
