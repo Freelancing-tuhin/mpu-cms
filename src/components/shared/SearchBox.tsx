@@ -7,7 +7,7 @@ const SearchBox = ({ searchText, setSearchText, getOrganizer, placeholder }: any
 
   return (
     <div className="flex items-center space-x-2 pb-4">
-      <input
+      {/* <input
         type="text"
         placeholder={placeholder}
         className="border border-gray-300 rounded-md w-72 px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
@@ -20,7 +20,7 @@ const SearchBox = ({ searchText, setSearchText, getOrganizer, placeholder }: any
       >
         <Icon icon="solar:minimalistic-magnifer-linear" height="18" />
         Search
-      </button>
+      </button> */}
     </div>
   );
 };

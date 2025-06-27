@@ -26,7 +26,7 @@ const Profile = () => {
             </div>
 
             {/* Username */}
-            <span className="text-sm font-medium text-gray-800">Admin</span>
+            <span className="text-sm font-medium text-gray-800 dark:text-gray-200">Admin</span>
 
             {/* Chevron Down Icon */}
             <Icon

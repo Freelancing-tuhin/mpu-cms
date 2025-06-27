@@ -5,7 +5,8 @@ const SubLinks = ({ icon, title, subtitle, link }: any) => {
   return (
     <Link
       to={link}
-      className="bg-white group rounded-xl shadow p-4 flex cursor-pointer items-center gap-4 transition-all duration-700 ease-in-out hover:bg-blue-600 hover:shadow-lg shadow-gray-400"
+      className="bg-white dark:bg-gray-800 group rounded-xl
+       shadow dark:shadow-gray-900 p-4 flex cursor-pointer items-center gap-4 transition-all duration-700 ease-in-out hover:bg-blue-600 hover:shadow-lg shadow-gray-400"
     >
       <div className="bg-gray-100 p-3 rounded-full transition-all duration-700 ease-in-out group-hover:bg-white">
         <Icon
