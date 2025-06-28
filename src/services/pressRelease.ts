@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:8989';
+const API_BASE_URL = 'https://mpu-uni-server.onrender.com';
 
 export interface IPressRelease {
   _id?: string;

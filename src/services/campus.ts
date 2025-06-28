@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:8989'; // Update if using ENV later
+const API_BASE_URL = 'https://mpu-uni-server.onrender.com'; // Update if using ENV later
 
 export interface ICampusLifeHighlight {
   _id?: string;

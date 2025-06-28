@@ -21,6 +21,7 @@ import Glimpses from 'src/cms/pages/media/glimps';
 import YouTube from 'src/cms/pages/media/youtube';
 import AcademicHighlights from 'src/cms/pages/media/highLights';
 import Downloads from 'src/cms/pages/utilsExtra/download';
+import WebProfile from 'src/cms/pages/academicInfo/webProfile/WebProfile';
 
 const AcademicInfo = Loadable(lazy(() => import('src/cms/pages/academicInfo/AcademicInfo')));
 const AcademicsStats = Loadable(lazy(() => import('src/cms/pages/academicStats/AcademicsStats')));
@@ -115,6 +116,15 @@ const Router = [
         ),
       },
       {
+        path: '/academic/web-profile',
+        exact: true,
+        element: (
+          <>
+            <WebProfile />
+          </>
+        ),
+      },
+      {
         path: '/academic/CampusLife',
         exact: true,
         element: (
@@ -141,6 +151,7 @@ const Router = [
           </>
         ),
       },
+
       {
         path: '/academic-statistics/placements',
         exact: true,
