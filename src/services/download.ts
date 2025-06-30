@@ -10,9 +10,14 @@ export interface IDownload {
   pdf_file?: string | null;
 }
 
-export const createDownload = async (data: IDownload) =>
-  (await axios.post(`${API_BASE_URL}/api/v1/downloads/create-download`, data)).data;
-
+export const createDownload = async (formData: FormData) =>
+  (
+    await axios.post(`${API_BASE_URL}/api/v1/downloads/create-download`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    })
+  ).data;
 export const getAllDownloads = async () =>
   (await axios.get(`${API_BASE_URL}/api/v1/downloads/get-downloads`)).data;
 

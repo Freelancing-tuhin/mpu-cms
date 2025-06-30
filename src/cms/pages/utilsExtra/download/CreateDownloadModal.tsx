@@ -5,57 +5,45 @@ import { createDownload } from 'src/services/download';
 
 export default function CreateDownloadModal({ refresh }: { refresh: () => void }) {
   const [open, setOpen] = useState(false);
-  const [form, setForm] = useState<any>({
-    type: '',
+  const [form, setForm] = useState({
+    type: 'syllabus',
     programme: '',
     title: '',
-    pdf_file: '',
   });
+  const [file, setFile] = useState<File | null>(null);
 
-  const handleChange = (e: any) => setForm((f: any) => ({ ...f, [e.target.name]: e.target.value }));
-
-  const upload = () => {
-    window.cloudinary
-      .createUploadWidget(
-        {
-          cloudName: 'diecfwnp9',
-          uploadPreset: 'jo9pp2yd',
-          sources: ['local', 'url'],
-          folder: 'downloads',
-          multiple: false,
-          cropping: false,
-          maxFileSize: 1500000,
-          resourceType: 'raw',
-          clientAllowedFormats: ['pdf'],
-        },
-        (error: any, result: any) => {
-          if (!error && result && result.event === 'success') {
-            console.log('===>result pdf', result.info?.asset_id);
-            setForm((prev: any) => ({
-              ...prev,
-              pdf_file: result.info.asset_id,
-            }));
-          }
-        },
-      )
-      .open();
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    setForm((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
   };
 
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setFile(e.target.files[0]);
+    }
+  };
 
-    if (!form.pdf_file) {
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!file) {
       alert('Please upload a PDF first.');
       return;
     }
 
+    const formData: any = new FormData();
+    formData.append('type', form.type);
+    formData.append('programme', form.programme);
+    formData.append('title', form.title);
+    formData.append('pdf_file', file);
+
     try {
-      console.log('Final form data before API call:', form); // ✅ Confirm it
-      await createDownload(form);
+      await createDownload(formData);
       refresh();
       setOpen(false);
     } catch (error) {
-      console.error('Create failed', error);
+      console.error('Upload failed', error);
     }
   };
 
@@ -99,23 +87,22 @@ export default function CreateDownloadModal({ refresh }: { refresh: () => void }
                 onChange={handleChange}
                 className="w-full px-3 py-2 border rounded"
               />
+              <input
+                type="file"
+                accept="application/pdf"
+                onChange={handleFileChange}
+                className="w-full px-3 py-2 border rounded"
+              />
 
-              <button
-                type="button"
-                onClick={upload}
-                className="w-full px-3 py-2 border rounded bg-gray-100 hover:bg-gray-200 transition"
-              >
-                Upload PDF from Cloudinary
-              </button>
-
-              {form.pdf_file && (
-                <p className="text-sm text-green-600 break-words">✅ PDF uploaded successfully.</p>
+              {file && (
+                <p className="text-sm text-green-600 break-words">✅ PDF selected: {file.name}</p>
               )}
+
               <div className="flex justify-end">
                 <button
                   type="submit"
                   className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
-                  disabled={!form.pdf_file}
+                  disabled={!file}
                 >
                   Save
                 </button>
