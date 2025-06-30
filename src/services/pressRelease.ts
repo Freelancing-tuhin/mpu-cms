@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'https://mpu-uni-server.onrender.com';
+const API_BASE_URL = 'https://mpu.kreativeteam.in';
 
 export interface IPressRelease {
   _id?: string;

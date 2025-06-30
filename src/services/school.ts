@@ -1,7 +1,7 @@
 // src/api/school.api.ts
 import axios from 'axios';
 
-const API_BASE_URL = 'https://mpu-uni-server.onrender.com'; // Adjust if needed
+const API_BASE_URL = 'https://mpu.kreativeteam.in'; // Adjust if needed
 
 // Types (Optional if you're already using ISchool from a shared types package)
 export interface ISchool {
